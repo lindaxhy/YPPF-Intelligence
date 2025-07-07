@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+# Django
+django>=5.0,<5.1
+djangorestframework
+
+# 数据库
+django_mysql
+pymysql
+
+# 其它第三方包
+# 通用包
+openpyxl
+xlwt
+pandas
+numpy
+tqdm
+typing-extensions
+
+# 特殊功能
+qrcode
+pypinyin
+## ImageField 的依赖
+pillow
+
+# 通信
+requests
+rpyc
+
+# 定时任务
+apscheduler
+django_apscheduler
+
+# 可选应用依赖
+pymssql
+cryptography

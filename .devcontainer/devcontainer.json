@@ -1,0 +1,44 @@
+{
+    "name": "YPPF DEV",
+    // Mount ssh keys
+    // "mounts": [
+    //     "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+    // ],
+    "dockerComposeFile": "docker-compose.yml",
+    "postCreateCommand": "pip install -r .devcontainer/dev_requirements.txt",
+    "service": "yppf",
+    "workspaceFolder": "/workspace",
+    "remoteUser": "vscode",
+    // Dev container is used for development, so the DEBUG environment variable should be set
+    "containerEnv": {
+        "DEBUG": "true"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.analysis.autoImportCompletions": false,
+                "autoDocstring.generateDocstringOnEnter": false,
+                "json.format.enable": false,
+                "editor.formatOnSave": true,
+                "editor.formatOnSaveMode": "modificationsIfAvailable",
+                "files.associations": {
+                    "**/*.html": "html",
+                    "**/templates/**/*.html": "django-html",
+                    "**/templates/**/*": "django-txt"
+                }
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.isort",
+                "ms-python.autopep8",
+                "njpwerner.autodocstring",
+                "monosans.djlint",
+                "GitHub.copilot",
+                "Gruntfuggly.todo-tree",
+                "eamodio.gitlens",
+                "ms-vsliveshare.vsliveshare",
+                "GitHub.vscode-pull-request-github"
+            ]
+        }
+    }
+}

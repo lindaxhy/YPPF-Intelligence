@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block add_css_file %}
+<link href={% static "assets/css/authentication/form-2.css" %} rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<link rel="stylesheet" type="text/css" href={% static "assets/css/forms/theme-checkbox-radio.css" %}>
+<link rel="stylesheet" type="text/css" href={% static "assets/css/forms/switches.css" %}>
+{% endblock %}
+
+{% block mainpage %}
+<div id="content" class="main-content" >
+{% if isFirst %}
+{% if err_code == 0 %}
+<script>
+    alert('初次登录请修改密码！')
+</script>
+{% endif %}
+{% endif %}
+
+
+    <div class="form-container outer">
+        <center>
+        <div class="form-form">
+            <div class="form-form-wrap">
+                <div class="form-container">
+                    <div class="form-content">
+                        <div class="d-flex user-meta">
+                            <img src={{bar_display.avatar_path}} class="usr-profile" alt="avatar">
+                            <div class="">
+                                <p class="">修改密码</p>
+                            </div>
+                        </div>
+
+                        <form class="text-left" method="POST">
+                            <div class="form">
+
+                                <div id="pw-field" class="field-wrapper input mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <label>{% if forgetpw or isFirst %}新密码{% else %}原密码{% endif %}</label><!--modified by pht-->
+                                        <a href="/logout/" class="forgot-pass-link">注销</a>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-lock">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input id="pw" name="pw" type="password" class="form-control"
+                                        placeholder="Password">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" id="toggle-password_pw" class="feather feather-eye">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <!--modified by wxy-->
+                                </div>
+
+
+
+                                <div class="form">
+                                    <div id="new-field" class="field-wrapper input mb-2">
+                                        <div class="d-flex justify-content-between">
+                                            <label for="new">{% if forgetpw or isFirst %}重复输入新密码{% else %}新密码{% endif %}</label><!--modified by pht-->
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                        <input id="new" name="new" type="password" class="form-control"
+                                            placeholder="Password">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" id="toggle-password_new"
+                                            class="feather feather-eye">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                        <!--modified by wxy-->
+                                    </div>
+
+                                    <div class="d-sm-flex justify-content-between">
+                                        <div class="field-wrapper">
+                                            <button type="submit" class="btn btn-primary" value=""
+                                                id="change_pw">提交</button>
+                                            <!--modified by wxy-->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                {% if err_code != 0 %}
+                                <div class="alert alert-warning  text-center">{{err_message}}</div>
+                                {% endif %}
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </center>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block add_js_file %}
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+    <script src={% static "assets/js/authentication/form-2.js" %}></script>
+
+    <!--added by wxy-->
+
+{% endblock %}
